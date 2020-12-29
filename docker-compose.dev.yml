@@ -8,7 +8,7 @@ services:
     volumes:
       - ./app:/app
     networks:
-      nginx-gunicorn-uvicorn:
+      network:
         ipv4_address: "172.35.0.2"
     environment:
       - HOST=172.35.0.2
@@ -21,7 +21,7 @@ services:
     volumes:
       - ./nginx/templates:/etc/nginx/templates
     networks:
-      nginx-gunicorn-uvicorn:
+      network:
         ipv4_address: "172.35.0.3"
     environment:
       - GUNICORN_HOST=172.35.0.2
@@ -32,7 +32,7 @@ services:
       - app
 
 networks:
-  nginx-gunicorn-uvicorn:
+  network:
     ipam:
       driver: default
       config:
